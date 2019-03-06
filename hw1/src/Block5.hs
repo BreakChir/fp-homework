@@ -100,3 +100,13 @@ fromString = foldMap One
 toString :: Builder -> String
 toString (One x)     = [x]
 toString (Many list) = foldr (\x xs -> toString x ++ xs) [] list
+
+-- У Builder долго может выполняться операция <>, из-за ++,
+-- который работает за длину левого аргумента. Но он необходим
+-- для поддержки ассоциативности. Поэтому можно написать более
+-- быструю операцию объединения.
+builderConcat :: Builder -> Builder -> Builder
+builderConcat (Many []) b         = b
+builderConcat a         (Many []) = a
+builderConcat a@(One _) Many list = Many (a : list)
+builderConcat a         b         = Many [a, b]
