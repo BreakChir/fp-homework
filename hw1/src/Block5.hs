@@ -3,6 +3,7 @@ module Block5
   , Endo (..)
   , Name (..)
   , ThisOrThat (..)
+  , builderConcat
   , eitherConcat
   , fromString
   , maybeConcat
@@ -106,7 +107,7 @@ toString (Many list) = foldr (\x xs -> toString x ++ xs) [] list
 -- для поддержки ассоциативности. Поэтому можно написать более
 -- быструю операцию объединения.
 builderConcat :: Builder -> Builder -> Builder
-builderConcat (Many []) b         = b
-builderConcat a         (Many []) = a
-builderConcat a@(One _) Many list = Many (a : list)
-builderConcat a         b         = Many [a, b]
+builderConcat (Many []) b           = b
+builderConcat a         (Many [])   = a
+builderConcat a@(One _) (Many list) = Many (a : list)
+builderConcat a         b           = Many [a, b]
