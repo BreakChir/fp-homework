@@ -6,7 +6,8 @@ module Task6
 import Data.Maybe (mapMaybe)
 import Task1 (distributivity)
 
--- WHNF: (Left ("harold" ++ " hide " ++ "the " ++ "pain")), Left ("harold" ++ " hide " ++ "the " ++ "pain")))
+-- WHNF: ( Left ("harold" ++ " hide " ++ "the " ++ "pain"))
+--       , Left ("harold" ++ " hide " ++ "the " ++ "pain")))
 e1 :: (Either [Char] b, Either [Char] c)
 e1 = distributivity (Left ("harold" ++ " hide " ++ "the " ++ "pain"))
 
