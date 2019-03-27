@@ -25,7 +25,7 @@ intToDay x
   | x == 4    = Friday
   | x == 5    = Saturday
   | x == 6    = Sunday
-  | otherwise = error "dayToEnum: bad argument"
+  | otherwise = error "intToDay: bad argument"
 
 dayToInt :: Day -> Int
 dayToInt Monday    = 0

@@ -5,7 +5,7 @@ module Block1
   , stringSum
   ) where
 
-import Data.List(sort)
+import Data.List (sort)
 
 -- | Sorts third-element tuple
 -- >>> order3 (5, 2, 10)
